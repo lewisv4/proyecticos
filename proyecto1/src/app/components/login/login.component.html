@@ -1,19 +1,25 @@
+<mat-card class="body mat-elevation-z8">
+
 <div class="body">
 
     <div class="login">
-        <img [src]="logo" alt="" width="50%" height="80%">
-        <h1 class="h3 mb-3 fw-normal">Login</h1>
+      <mat-card-title>Login</mat-card-title>
+      <mat-spinner *ngIf="loading" diameter="50" class="spinner"></mat-spinner>
+      <form *ngIf="!loading" [formGroup]="form">
+         <img [src]="logo" alt="" width="50%" height="80%">
+        <h1 class="h3 mb-3 fw-normal">Lewis</h1>
         <mat-form-field class="ancho" appearance="fill">
             <mat-label>Usuario</mat-label>
-            <input matInput>
+            <input matInput autocomplete="off" formControlName="username">
           </mat-form-field>
-          <mat-form-field class="ancho" appearance="fill">
+          <mat-form-field class="ancho" appearance="fill" >
             <mat-label>Contraseña</mat-label>
-            <input matInput>
+            <input matInput autocomplete="off" formControlName="password">
           </mat-form-field>
           <br>
-          <button (click)="ingresar()" class="ancho" mat-raised-button mat-button color="primary">Primary</button>
+          <button (click)="ingresar()" class="ancho" mat-raised-button mat-button color="primary" [disabled]="form.invalid">Ingressar</button>
+      </form>
+       
     </div>
 </div>
-
-
+</mat-card>
